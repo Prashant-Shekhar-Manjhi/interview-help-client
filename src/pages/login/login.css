@@ -1,0 +1,120 @@
+.login-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    max-width: 150rem;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.login-left-container{
+    background-color: red;
+    margin: auto auto;
+}
+
+.login-left-heading{
+    font-size: 6.2rem;
+}
+
+.login-right-container{
+    background-color: blue;
+}
+
+/* Login page css... */
+
+.login-form-item{
+    font-size: 2rem;
+}
+
+.login-form{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.2rem;
+    margin-bottom: 1rem;
+     /* flex-direction: column; */
+}
+
+.login-input-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+    align-items: center;
+    width: 100%;
+}
+
+.form-item-title{
+    width: 100%;
+    font-size: 2rem;
+}
+
+.login-form-item{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+}   
+
+.login-form-item input{
+    height: 3.8rem;
+    outline: none;
+    font-size: 1.6rem;
+    padding: 0 1rem;
+    border-radius: 0.4rem;
+    border: 0.2rem solid #868e96;
+    /* border: none; */
+}
+
+.login-form-bottom-wrapper{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    width: 100%;
+    /* justify-items: center; */
+}
+.login-form-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-form-button button{
+    font-size: 2rem;
+    display: block;
+    padding: 0.8rem 2rem;
+    width: 100%;
+    border-radius: 0.8rem;
+    border: none;
+    background-color: #adb5bd;
+    cursor: pointer;
+}
+
+.login-form-button button:hover{
+    background-color: #868e96;
+}
+
+.sign-up-button:hover{
+    background-color: #868e96;
+}
+
+.sign-up-button{
+    font-size: 2rem;
+    display: block;
+    padding: 0.8rem 2rem;
+    width: 100%;
+    border-radius: 0.8rem;
+    border: none;
+    background-color: #adb5bd;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    color: #343a40;
+
+}
+
+.forget-password{
+    text-align: center;
+    font-size: 1.6rem;
+    text-decoration: none;
+    margin-bottom: 3.2rem;
+}

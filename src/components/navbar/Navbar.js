@@ -28,11 +28,11 @@ export default function Navbar() {
                     <h1>Interview<span className="color">.help</span></h1>
                 </div>
                 <div className="navbar-links">
-                    <p className="navbar-link">Home</p>
-                    <p className="navbar-link">Resources</p>
-                    <p className="navbar-link">Experiences</p>
-                    <p className="navbar-link">Techstack</p>
-                    <p className="navbar-link">Contact</p>
+                    <NavLink to="/" className="navbar-link">Home</NavLink>
+                    <NavLink to="/resource" className="navbar-link">Resources</NavLink>
+                    <NavLink to="/experience" className="navbar-link">Experiences</NavLink>
+                    <NavLink to="/techstack" className="navbar-link">Techstack</NavLink>
+                    <NavLink to="/contact" className="navbar-link">Contact</NavLink>
                     {!user && <NavLink to="/login" className="navbar-link button">Log in</NavLink>}
                     {user && <img onClick={profileClickHandler}className="navbar-profile-logo"src={profileLogo} alt="Logo" />}
                 </div>

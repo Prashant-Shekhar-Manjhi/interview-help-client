@@ -9,6 +9,7 @@ export default function Login() {
   const email = useRef();
   const password = useRef();
   const {dispatch}  = useContext(AuthContext);
+  const loggedInUser = useContext(AuthContext).user;
 
   const onSubmitHandler = async (e)=>{
     e.preventDefault();
@@ -16,12 +17,13 @@ export default function Login() {
     try{
       const res = await axios.post("http://localhost:8080/api/users/login", {email:email.current.value, password:password.current.value});
       dispatch(loginSuccess(res.data.data.user));
+
     }catch(err){
       dispatch(loginFailure());
     }
 
   }
-
+ console.log(loggedInUser);
   return (
     <div className="login-container">
       <div className="login-left-contaioner">

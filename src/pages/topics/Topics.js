@@ -1,14 +1,19 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect,useState,useContext} from 'react';
 import "./topics.css";
 import {useParams} from "react-router";
 import axios from 'axios';
 import Navbar from '../../components/navbar/Navbar';
 import { NavLink } from 'react-router-dom';
+import Suggestion from '../../components/suggestion/Suggestion';
+import { AuthContext } from '../../context/authContext/AuthContext';
+// import { format, render, cancel, register } from 'timeago.js';
 
 
 export default function Topics() {
     const [topics, setTopics] = useState(null);
     const [course, setCourse] = useState(null);
+    const [messages, setMessages] = useState(null);
+    const loggedInUser = useContext(AuthContext).user;
     const param = useParams();
     const courseId = param.id;
 
@@ -22,41 +27,59 @@ export default function Topics() {
         setCourse(_course.data.data.courses)
     }
 
+    const fetchMessages = async (courseId)=>{
+        try{
+            const res = await axios.get(`http://localhost:8080/api/suggestion/${courseId}`);
+            setMessages(res.data.result)
+        }catch(err){
+            console.log(err);
+        }   
+    }
+
+
     useEffect(()=>{
         fetchData(courseId);
+        fetchMessages(courseId);
     },[courseId]);
-    console.log(topics);
-    console.log(course);
+
+    // console.log(Math.random().toString());
   return (
      <>
-        <Navbar/>
+        <Navbar />
         {topics&&course&&<div className="course-wrapper">
-            <h1 className='main-heading'>DSA</h1>
+            <h1 className='main-heading'>{course?.name}</h1>
             <div className="course-topics">
                 {topics.map((topic)=>{
-                    return (<NavLink to={`/topics`}  className="course-topics-item">{topic.topic}</NavLink>)
+                    return (<NavLink to={`/topics`} key={Math.random().toString()}  className="course-topics-item">{topic.topic}</NavLink>)
                 })}
-                {/* <NavLink to={`/topics`}  className="course-topics-item">Array</NavLink>
-                <NavLink to={`/topics`}  className="course-topics-item">Array</NavLink>
-                <NavLink to={`/topics`}  className="course-topics-item">Array</NavLink>
-                <NavLink to={`/topics`}  className="course-topics-item">Array</NavLink>
-                <NavLink to={`/topics`}  className="course-topics-item">Array</NavLink>
-                <NavLink to={`/topics`}  className="course-topics-item">Array</NavLink> */}
+               
             </div>
             <div className="course-pdf-wrapper">
                 <h2 className="sub-heading">Important PDFs</h2>
                 <div className="course-pdf-list">
                     {course.pdfLink.map((link)=>{
-                        return( <p className="course-pdf-list-item">{link}</p>);
+                        return( <p key={Math.random().toString()} className="course-pdf-list-item">{link}</p>);
                     })}
-                    {/* <p className="course-pdf-list-item">pdf-1</p>
-                    <p className="course-pdf-list-item">pdf-2</p>
-                    <p className="course-pdf-list-item">pdf-3</p>
-                    <p className="course-pdf-list-item">pdf-4</p>
-                    <p className="course-pdf-list-item">pdf-5</p> */}
                 </div>
             </div>
-            <div className="course-suggestion-box"></div>
+            <div className="course-suggestion-box">
+                <Suggestion user_id={loggedInUser?._id} course_id={course._id}/>
+                <div className="course-suggestions">
+                    {messages && messages.map( (message)=>{
+                        // console.log(format(message.messages.createdAt));
+                        return (
+                            <div key={message._id} className="course-suggestion-item">
+                                <p className="course-message">{message.messages?.text}</p>
+                                <div className="course-suggestion-footer">
+                                    <p className="message-sent-at">{message.createdAt?.toDateString()}</p>
+                                    <p className="message-sent-by">{message.name}</p>
+                                </div>
+                            </div>
+                        )
+                    })}
+                    
+                </div>
+            </div>
         </div>}
     </>
   )

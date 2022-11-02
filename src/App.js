@@ -13,6 +13,7 @@ import { AuthContext } from './context/authContext/AuthContext';
 import {Navigate} from "react-router-dom";
 import SignUp from './pages/signup/SignUp';
 import Topics from './pages/topics/Topics';
+import Company from './pages/company/Company';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/techstack" element={<Techstack/>}/>
         <Route exact path="/contact" element={<Contact/>}/>
         <Route exact path="/topics/:id" element={<Topics/>}/>
+        <Route exact path="/company/:id" element={<Company/>}/>
         {/* <Route exact path="/login" element={ logedInUser ? <Navigate to="/"/> : <Login/>}/> */}
       </Routes>
    </Router>

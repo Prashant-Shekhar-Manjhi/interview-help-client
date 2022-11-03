@@ -4,12 +4,15 @@ import { loginFailure, loginStart, loginSuccess } from '../../context/authContex
 import "./login.css"
 import { AuthContext } from '../../context/authContext/AuthContext';
 import { NavLink } from 'react-router-dom';
+// import cancelIcon from "./../../assets/icons8-close-24.png"
 
 export default function Login() {
   const email = useRef();
   const password = useRef();
   const {dispatch}  = useContext(AuthContext);
-  const loggedInUser = useContext(AuthContext).user;
+  // const [errorMess, setErrorMess] = useState("");
+  // const [error, setError] = useState(false);
+  //const loggedInUser = useContext(AuthContext).user;
 
   const onSubmitHandler = async (e)=>{
     e.preventDefault();
@@ -20,10 +23,9 @@ export default function Login() {
 
     }catch(err){
       dispatch(loginFailure());
+      // setErrorMess(err.response.data.message);
     }
-
   }
- console.log(loggedInUser);
   return (
     <div className="login-container">
       <div className="login-left-contaioner">

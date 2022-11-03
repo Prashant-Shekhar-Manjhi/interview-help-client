@@ -3,6 +3,7 @@ import axios from 'axios';
 import './signup.css'
 import { signup } from '../../context/authContext/AuthAction';
 import { AuthContext } from '../../context/authContext/AuthContext';
+import { NavLink } from 'react-router-dom';
 
 export default function SignUp() {
     const name = useRef();
@@ -51,6 +52,9 @@ export default function SignUp() {
             <div className="signup-form-bottom-wrapper">
                 <div className="signup-form-button">
                     <button type="submit">Sign up</button>
+                </div>
+                <div className="signup-form-button">
+                    <NavLink to="/login" className="sign-up-button"type="button">Log in</NavLink>
                 </div>
             </div>
         </form>

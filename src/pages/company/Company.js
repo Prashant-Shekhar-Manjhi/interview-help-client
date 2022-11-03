@@ -10,7 +10,7 @@ export default function Company() {
     const company_id = param.id;
     const fetchCompany = async (id)=>{
         try{
-            const res = await axios.get(`http://localhost:8080/api/company/${id}`);
+            const res = await axios.get(`http://localhost:8080/api/company/id/${id}`);
             // console.log(res.data.company);
             setCompany(res.data.company);
         }catch(err){

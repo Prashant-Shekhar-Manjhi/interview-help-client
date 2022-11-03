@@ -1,5 +1,5 @@
 .experience-wrapper{
-    margin-top: 12rem;
+    margin-top: 8rem;
     max-width: 92rem;
     margin-left: auto;
     margin-right: auto;
@@ -16,12 +16,14 @@
 .experience-link-container{
     display: flex;
     justify-content: center;
+     margin-bottom: 4.2rem;
 }   
 .experience-link {
     width: 30%;
     text-align: center;
     font-size: 1.6rem;
     text-decoration: none;
+    /* margin-bottom: 3.2rem; */
 }
 
 .experience-company-list-item{
@@ -34,4 +36,64 @@
     font-size: 2.2rem;
     text-decoration: none;
     padding: 2rem 1.5rem;
+}
+
+.add-experience-wrapper{
+    -webkit-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.25);
+    border-radius: 0.5rem;
+    padding: 2rem;
+}
+.add-experience-form{
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+    margin-top: 3.2rem;
+}
+
+.add-experience-form-input{
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-experience-form-input textarea{
+    width: 75%;
+    padding: 0.5rem;
+    outline: none;
+    font-size: 1.6rem;
+}
+
+.add-experience-form-label{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.add-experience-form-name{
+    width: 75%;
+    padding: 0.5rem;
+    height: 3.2rem;
+    outline: none;
+    font-size: 1.6rem;
+}
+
+.add-experience-form-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-experience-form-button button{
+    font-size: 2rem;
+    display: block;
+    padding: 0.8rem 2rem;
+    width: 100%;
+    border-radius: 0.8rem;
+    border: none;
+    background-color: #adb5bd;
+    cursor: pointer;
+}
+
+.add-experience-form-button button:hover{
+    background-color: #868add;
 }

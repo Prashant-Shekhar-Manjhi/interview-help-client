@@ -46,19 +46,19 @@ export default function Topics() {
   return (
      <>
         <Navbar />
-        {topics&&course&&<div className="course-wrapper">
+        {course&&<div className="course-wrapper">
             <h1 className='main-heading'>{course?.name}</h1>
-            <div className="course-topics">
+           {(topics.length!==0)&& <div className="course-topics">
                 {topics.map((topic)=>{
                     return (<NavLink to={`/topics`} key={Math.random().toString()}  className="course-topics-item">{topic.topic}</NavLink>)
                 })}
                
-            </div>
+            </div>}
             <div className="course-pdf-wrapper">
                 <h2 className="sub-heading">Important PDFs</h2>
                 <div className="course-pdf-list">
-                    {course.pdfLink.map((link)=>{
-                        return( <p key={Math.random().toString()} className="course-pdf-list-item">{link}</p>);
+                    {course.pdfLinks.map((pdfLink)=>{
+                        return( <a href={pdfLink.link} target="_blank"  rel="noreferrer" key={Math.random().toString()} className="course-pdf-list-item">{pdfLink.pdf_name}</a>);
                     })}
                 </div>
             </div>

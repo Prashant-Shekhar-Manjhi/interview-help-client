@@ -32,6 +32,7 @@ export default function Company() {
         fetchCompany(company_id);
         fetchExperiences(company_id);
     },[company_id]);
+
   return (
     <>
         <Navbar/>
@@ -42,8 +43,11 @@ export default function Company() {
             </div>}
             {experiences&&experiences.map((exp)=>{
                 return <div key={exp._id}className="company-experience-list">
+                            <p className="experience-candidate-name">{exp.name}</p>
+                            <p className="experience-company-name">{company.name}</p>
+                            <p className="experience-role">{exp.role}</p>
                             <p className="company-experience-list-text">
-                                {exp?.description}
+                                {exp?.description.toString()}
                             </p>
                         </div>
             })}

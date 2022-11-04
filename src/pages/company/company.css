@@ -14,10 +14,21 @@
     box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.25);
     border-radius: 0.5rem;
     padding: 2rem;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
 }
 .about-company-text{
     line-height: 1.2;
     word-spacing: 0.1rem;
 }
 
+.company-experience-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.company-experience-list-text{
+    line-height: 1.4;
+    word-spacing: 0.5rem;
+}

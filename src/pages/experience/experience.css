@@ -44,6 +44,7 @@
     box-shadow: 0px 0px 13px 0px rgba(0,0,0,0.25);
     border-radius: 0.5rem;
     padding: 2rem;
+    /* position:absolute; */
 }
 .add-experience-form{
     display: flex;
@@ -81,6 +82,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 1rem;
 }
 
 .add-experience-form-button button{
@@ -95,5 +97,6 @@
 }
 
 .add-experience-form-button button:hover{
-    background-color: #868add;
+    background-color: #c92a2a;
+    color: #fff5f5 !important;
 }

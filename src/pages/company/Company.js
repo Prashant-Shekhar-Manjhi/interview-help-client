@@ -37,7 +37,7 @@ export default function Company() {
         <Navbar/>
         {company && <div className="company-wrapper">
             <h1 className="main-heading">{company?.name}</h1>
-            {company?.description===""&&<div className="about-company">
+            {company?.description!==""&&<div className="about-company">
                 <p className="about-company-text">{company?.description}</p>
             </div>}
             {experiences&&experiences.map((exp)=>{

@@ -4,14 +4,13 @@ import { useNavigate, NavLink } from 'react-router-dom';
 import "./experience.css";
 import axios from 'axios';
 import { AuthContext } from '../../context/authContext/AuthContext';
-// import { useRef } from 'react';
+
 
 
 export default function Experience() {
   const [companies, setCompanies] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [showCompanies, setShowCompanies] = useState(true);
-  const [company_id, setCompany_id] = useState("");
   const navigate = useNavigate();
   const loggedInUser = useContext(AuthContext).user;
   const [name,setName] = useState("");
@@ -27,7 +26,6 @@ export default function Experience() {
         console.log(err);
       }
   }
-
   const onClickHandler = ()=>{
     if(loggedInUser != null){
       setShowCompanies(false);
@@ -38,37 +36,25 @@ export default function Experience() {
   }
 
   const onSubmitHandler = async (e)=>{
-      e.preventDefault();
-      if(loggedInUser != null){
-        let res = await axios(`http://localhost:8080/api/company/name/${companyName}`);
-        // console.log(res.data.company);
-        if(res.data.company.length === 0){
-              res = await axios.post(`http://localhost:8080/api/company`,{
-              name:companyName,
-              description : ""
-            });    
-        }
-        setCompany_id(res.data.data.company[0]._id);
-        // console.log(res);
-       if(company_id){ console.log(res);
-        if(true){
-          console.log(company_id)
-         try{ await axios.post("http://localhost:8080/api/experience",{
-            user_id:loggedInUser._id,
-            name:name,
-            company_id:company_id,
-            role:role,
-            description:desc
-          });
-          setShowCompanies(true);
-          setShowForm(false);
-        }catch(err){
-          console.log(err);
-          }
-        }}
-      }else{
-        navigate("/login");
+    e.preventDefault();
+    if(name && companyName && role && desc){
+      try{
+        const res = await axios.post("http://localhost:8080/api/experience",{
+          user_id:loggedInUser._id,
+          name:name,
+          company:companyName,
+          role:role,
+          description:desc
+        });
+        alert(res.data.message);
+        setShowForm(false);
+        setShowCompanies(true);
+      }catch(err){
+        console.log(err);
       }
+    }else{
+      alert("Please fill the required fields!")
+    }   
   }
   useEffect(()=>{
     fetchCompanies();
@@ -110,6 +96,7 @@ export default function Experience() {
                 </div>
                 <div className="add-experience-form-button">
                   <button type="submit" >Submit</button>
+                  <button type="button" onClick={()=>{setShowForm(false);  setShowCompanies(true);}} >Cancel</button>
                 </div>
               </form>
             </div>}
